@@ -259,3 +259,61 @@ button {
     font-weight: 500;
     transition: background 0.3s ease;
 }
+
+/* (Previous CSS remains the same) */
+
+/* Additional styling for experience section */
+.experience ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.experience li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+/* Project links */
+.project-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* Education section */
+.education ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.education li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.education li::before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .experience li, .projects li {
+        font-size: 0.95rem;
+    }
+    
+    .card {
+        padding: 1.25rem;
+    }
+}
