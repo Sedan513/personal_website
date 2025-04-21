@@ -1,0 +1,125 @@
+:root {
+    --quantum-blue: #0ff0fc;
+    --quantum-purple: #9d4edd;
+    --dark-space: #0a0e17;
+    --qubit-glow: rgba(157, 78, 221, 0.7);
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: var(--dark-space);
+    color: white;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.quantum-circuit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--quantum-blue);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+    background: linear-gradient(90deg, var(--quantum-blue), var(--quantum-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tagline {
+    font-style: italic;
+    color: var(--quantum-blue);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(10, 14, 23, 0.8);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    border-bottom: 1px solid var(--quantum-blue);
+    text-shadow: 0 0 5px var(--quantum-blue);
+}
+
+section {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.qubit {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--quantum-blue);
+    margin: 0 5px;
+    animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--quantum-purple);
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--qubit-glow);
+}
+
+.skills ul, .research-area, .publication, .contact-methods {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-left: 3px solid var(--quantum-blue);
+    margin: 1rem 0;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--quantum-blue);
+}
+
+a {
+    color: var(--quantum-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 5px var(--qubit-glow);
+}
