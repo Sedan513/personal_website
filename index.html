@@ -3,114 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sebastian Rincon Camacho | CS, Physics & Math</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Your Name | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <canvas id="quantumCanvas" class="quantum-bg"></canvas>
-    
     <header>
         <div class="profile-container">
-            <img src="IMG_8321.jpeg" alt="Your Name" class="profile-pic">
+            <img src="profile.jpg" alt="Your Name" class="profile-pic">
         </div>
-        <h1>Sebastian Rincon Camacho</h1>
-        <p class="tagline">Computer Science · Physics · Applied Mathematics</p>
+        <h1>Your Name</h1>
+        <p class="tagline">Computer Science, Physics & Applied Mathematics</p>
     </header>
     
     <nav>
         <a href="#about">About</a>
-        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
     </nav>
     
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>I'm a multidisciplinary researcher passionate about the intersection of computation, physics, and mathematics. My work explores fundamental questions at the boundaries of these fields, with particular interest in quantum-inspired algorithms and mathematical modeling.</p>
+            <div class="card about-card">
+                <div class="about-content">
+                    <p>I'm a multidisciplinary researcher with expertise in computer science, physics, and applied mathematics. My passion lies at the intersection of these fields, where I explore quantum-inspired algorithms and computational solutions to complex problems.</p>
+                    <p>When I'm not coding or researching, you can find me hiking, reading science fiction, or playing chess. I believe in using technology to solve real-world challenges while maintaining a strong theoretical foundation.</p>
+                </div>
+                <div class="skills">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li>Quantum Computing</li>
+                        <li>Machine Learning</li>
+                        <li>Algorithm Design</li>
+                        <li>Data Analysis</li>
+                        <li>Scientific Computing</li>
+                        <li>Mathematical Modeling</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>Work Experience</h2>
             
-            <div class="skills">
-                <h3>Technical Skills</h3>
+            <div class="card">
+                <h3>Quantum Computing Researcher</h3>
+                <p class="company">Tech Innovations Lab | 2022-Present</p>
                 <ul>
-                    <li>Quantum Computing Fundamentals</li>
-                    <li>Algorithm Design & Analysis</li>
-                    <li>Mathematical Physics</li>
-                    <li>Statistical Modeling</li>
-                    <li>Scientific Computing</li>
-                    <li>Machine Learning</li>
+                    <li>Developed quantum algorithms for optimization problems</li>
+                    <li>Implemented hybrid quantum-classical machine learning models</li>
+                    <li>Published 3 papers on quantum applications</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Research Assistant</h3>
+                <p class="company">University Physics Department | 2020-2022</p>
+                <ul>
+                    <li>Conducted computational physics simulations</li>
+                    <li>Mentored undergraduate students</li>
+                    <li>Presented findings at 2 international conferences</li>
                 </ul>
             </div>
         </section>
         
-        <section id="research">
-            <h2>Research Interests</h2>
-            
-            <div class="research-area">
-                <h3>Computational Physics</h3>
-                <p>Developing novel computational methods for solving complex physical systems, with applications in condensed matter and high-energy physics.</p>
-            </div>
-            
-            <div class="research-area">
-                <h3>Algorithmic Foundations</h3>
-                <p>Exploring the mathematical underpinnings of computation, including quantum-inspired classical algorithms.</p>
-            </div>
-            
-            <div class="research-area">
-                <h3>Mathematical Modeling</h3>
-                <p>Creating and analyzing mathematical models for complex systems across scientific domains.</p>
-            </div>
-        </section>
-        
         <section id="projects">
-            <h2>Featured Projects</h2>
+            <h2>Projects</h2>
             
-            <div class="project-card">
-                <h3>Quantum-Inspired Optimization</h3>
-                <p>Implementation of quantum-inspired optimization algorithms for classical computers.</p>
-                <p><strong>Techniques:</strong> Python, NumPy, Matplotlib</p>
+            <div class="card">
+                <h3>Quantum Algorithm Visualizer</h3>
+                <p class="tech">Python, Qiskit, JavaScript</p>
+                <p>Interactive web application demonstrating quantum algorithms with classical analogies and visual explanations.</p>
+                <a href="#" class="project-link">View Project →</a>
             </div>
             
-            <div class="project-card">
-                <h3>Computational Physics Simulator</h3>
-                <p>Interactive simulations of physical systems using numerical methods.</p>
-                <p><strong>Techniques:</strong> C++, OpenGL, CUDA</p>
-            </div>
-            
-            <div class="project-card">
-                <h3>Mathematical Visualization Tools</h3>
-                <p>Web-based tools for visualizing complex mathematical concepts.</p>
-                <p><strong>Techniques:</strong> JavaScript, D3.js, Three.js</p>
+            <div class="card">
+                <h3>Physics Simulation Engine</h3>
+                <p class="tech">C++, CUDA, OpenGL</p>
+                <p>High-performance engine for simulating quantum and classical physical systems with real-time visualization.</p>
+                <a href="#" class="project-link">View Project →</a>
             </div>
         </section>
         
-        <section id="publications">
-            <h2>Academic Publications</h2>
+        <section id="education">
+            <h2>Education</h2>
             
-            <div class="publication">
-                <h3>Title of Your Published Paper</h3>
-                <p>Journal of Computational Physics, 2023</p>
-                <p>Co-authors: Professor X, Researcher Y</p>
-                <a href="#">[PDF]</a> <a href="#">[DOI]</a>
+            <div class="card">
+                <h3>University of Science</h3>
+                <p class="degree">BS in Computer Science, Physics, and Applied Mathematics</p>
+                <p class="date">Expected Graduation: May 2024 | GPA: 3.8/4.0</p>
+                <ul>
+                    <li>Dean's List all semesters</li>
+                    <li>Undergraduate Research Fellowship</li>
+                    <li>Thesis: "Quantum-Inspired Classical Algorithms"</li>
+                </ul>
             </div>
         </section>
         
         <section id="contact">
-            <h2>Contact</h2>
-            <p>I'm always interested in discussing research, collaborations, or new ideas!</p>
-            
-            <div class="contact-methods">
-                <p>Email: <a href="mailto:your.email@university.edu">your.email@university.edu</a></p>
-                <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
-                <p>ORCID: <a href="https://orcid.org/your-id">orcid.org/your-id</a></p>
+            <h2>Get In Touch</h2>
+            <div class="card contact-card">
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-alt"></i>
+                        <a href="#" target="_blank">Download Resume</a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
     
     <footer>
         <p>© 2023 Your Name. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
     </footer>
     
     <script src="script.js"></script>
