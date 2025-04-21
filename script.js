@@ -94,3 +94,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Add to your script.js
+// Contact Form Submission
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+        name: this.name.value,
+        email: this.email.value,
+        message: this.message.value
+    }).then(() => {
+        alert('Message sent!');
+        this.reset();
+    }, (error) => {
+        alert('Error: ' + error.text);
+    }).finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message';
+    });
+});
