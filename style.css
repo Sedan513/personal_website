@@ -154,52 +154,6 @@ li {
     margin-bottom: 0.5rem;
 }
 
-.project-link {
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--primary);
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.project-link:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-footer a {
-    color: var(--primary);
-    text-decoration: none;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    nav a {
-        margin: 0.5rem 0;
-    }
-    
-    .profile-container {
-        width: 120px;
-        height: 120px;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-}
-
 /* (Previous CSS remains the same until the .project-link styles) */
 
 /* About Section */
