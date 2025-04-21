@@ -337,3 +337,38 @@ button {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+
+/* Quantum canvas styles */
+#quantumCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind all content */
+    opacity: 0.3; /* Make it subtle */
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1; /* Above the canvas */
+    background: rgba(255, 255, 255, 0.85); /* Slight white overlay */
+}
+
+/* For dark mode preference */
+@media (prefers-color-scheme: dark) {
+    .content-wrapper {
+        background: rgba(10, 10, 20, 0.85);
+    }
+    
+    #quantumCanvas {
+        opacity: 0.15;
+    }
+}
+
+/* Header specific adjustments */
+header {
+    background: transparent;
+    padding: 2rem 0;
+    position: relative;
+}

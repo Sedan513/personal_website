@@ -10,176 +10,178 @@
 </head>
 <body>
     <canvas id="quantumCanvas"></canvas>
+    <div class="content-wrapper">
     <header>
-        <div class="profile-container">
-            <img src="IMG_8321.jpeg" alt="Sebastian Rincon Camacho" class="profile-pic">
-        </div>
-        <h1>Sebastian Rincon Camacho</h1>
-        <p class="tagline">Computer Science, Physics & Applied Mathematics</p>
-    </header>
-    
-    <nav>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="card about-card">
-                <div class="about-content">
-                    <p>I'm a multidisciplinary student at Johns Hopkins University pursuing degrees in Computer Science, Physics, and Applied Mathematics & Statistics. My passion lies at the intersection of quantum computing, machine learning, and software engineering.</p>
-                    <p>With experience at Amazon AWS, Sierra Nevada Corporation, and the JHU Quantum Computing Theory Group, I bring a unique combination of technical skills and research experience to challenging problems.</p>
+            <div class="profile-container">
+                <img src="IMG_8321.jpeg" alt="Sebastian Rincon Camacho" class="profile-pic">
+            </div>
+            <h1>Sebastian Rincon Camacho</h1>
+            <p class="tagline">Computer Science, Physics & Applied Mathematics</p>
+        </header>
+        
+        <nav>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        
+        <main>
+            <section id="about">
+                <h2>About Me</h2>
+                <div class="card about-card">
+                    <div class="about-content">
+                        <p>I'm a multidisciplinary student at Johns Hopkins University pursuing degrees in Computer Science, Physics, and Applied Mathematics & Statistics. My passion lies at the intersection of quantum computing, machine learning, and software engineering.</p>
+                        <p>With experience at Amazon AWS, Sierra Nevada Corporation, and the JHU Quantum Computing Theory Group, I bring a unique combination of technical skills and research experience to challenging problems.</p>
+                    </div>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <ul>
+                            <li>Programming: Java, Python, C/C++, SQL, JavaScript</li>
+                            <li>Web: HTML5, CSS3, Bootstrap, Flask, React</li>
+                            <li>ML/AI: TensorFlow, PyTorch, scikit-learn</li>
+                            <li>Quantum: Qiskit, Cirq, Quantum Algorithms</li>
+                            <li>Tools: Git, Docker, Unix/Linux, MATLAB, AutoCAD</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="skills">
-                    <h3>Technical Skills</h3>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                
+                <div class="card">
+                    <h3>Johns Hopkins University</h3>
+                    <p class="degree">B.S. in Computer Science, Physics, and Applied Mathematics & Statistics</p>
                     <ul>
-                        <li>Programming: Java, Python, C/C++, SQL, JavaScript</li>
-                        <li>Web: HTML5, CSS3, Bootstrap, Flask, React</li>
-                        <li>ML/AI: TensorFlow, PyTorch, scikit-learn</li>
-                        <li>Quantum: Qiskit, Cirq, Quantum Algorithms</li>
-                        <li>Tools: Git, Docker, Unix/Linux, MATLAB, AutoCAD</li>
+                        <li>Vice President, Alpha Epsilon Pi Fraternity</li>
+                        <li>Member, iBailai Latin Dance Team</li>
                     </ul>
                 </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
+            </section>
             
-            <div class="card">
-                <h3>Johns Hopkins University</h3>
-                <p class="degree">B.S. in Computer Science, Physics, and Applied Mathematics & Statistics</p>
-                <ul>
-                    <li>Vice President, Alpha Epsilon Pi Fraternity</li>
-                    <li>Member, iBailai Latin Dance Team</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="experience">
-            <h2>Work Experience</h2>
-            
-            <div class="card">
-                <h3>Incoming SDE Intern</h3>
-                <p class="company">Amazon (AWS) | Summer 2025</p>
-                <ul>
-                    <li>Incoming Software Development Engineering Intern</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h3>Software Engineering Intern</h3>
-                <p class="company">Sierra Nevada Corporation</p>
-                <ul>
-                    <li>Spearheaded design and implementation of robust system to test timestamp accuracy in SDR RF communication down to nanosecond scale (88ns resolution)</li>
-                    <li>Developed core software components in C/C++ using Sidekiq API for system integration</li>
-                    <li>Employed Docker for creating scalable development environments</li>
-                    <li>Led integration of Django web framework and FastAPI for internal testing platform</li>
-                    <li>Deployed applications to production with Azure CI/CD pipelines</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h3>Machine Learning & Data Analysis Researcher</h3>
-                <p class="company">JHU Quantum Computing Theory Group</p>
-                <ul>
-                    <li>Used TensorFlow in Python to develop Deep Learning model for quantum system characterization</li>
-                    <li>Analyzed training data to derive ideal model for processing simulated quantum circuits</li>
-                    <li>Translated quantum mechanics foundations into testable code for noise characterization</li>
-                    <li>Gained expertise in quantum programming (Qiskit, Cirq)</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h3>Mechanical Engineering Intern</h3>
-                <p class="company">U.S. Army Corps of Engineers</p>
-                <ul>
-                    <li>Designed mechanical systems for biochemistry lab using AutoCAD</li>
-                    <li>Created HVAC and exhaust system for six-building complex</li>
-                    <li>Contributed to project documentation ensuring federal compliance</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            
-            <div class="card">
-                <h3>Smart-Alect Hackathon App</h3>
-                <p class="tech">Flask, Google Maps API, Twilio</p>
-                <ul>
-                    <li>Emergency response communication app connecting responders, businesses, and civilians</li>
-                    <li>Implemented location-based emergency contacts and custom instructions</li>
-                    <li>Developed admin page for geo-location mapping and emergency protocols</li>
-                    <li>Presented functional prototype to judging panel</li>
-                </ul>
-                <a href="#" class="project-link">View Project →</a>
-            </div>
-            
-            <div class="card">
-                <h3>Skin Cancer Detection ML Model</h3>
-                <p class="tech">Python, TensorFlow, scikit-learn</p>
-                <ul>
-                    <li>Developed ML model to differentiate benign/malignant skin moles</li>
-                    <li>Implemented deep convolutional neural networks (CNNs)</li>
-                    <li>Achieved 79.8% accuracy on validation data</li>
-                </ul>
-                <a href="#" class="project-link">View Project →</a>
-            </div>
-            
-            <div class="card">
-                <h3>Navy Federal Credit Union Co-op</h3>
-                <p class="tech">UX Design</p>
-                <ul>
-                    <li>Redesigned customer experience for new credit union members</li>
-                    <li>Iteratively refined UI based on user feedback</li>
-                    <li>Focused on accessibility and visual consistency</li>
-                </ul>
-                <a href="#" class="project-link">View Project →</a>
-            </div>
-        </section>
-        
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <div class="card contact-card">
-                <div class="contact-methods">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:sebastianrincon04@gmail.com">sebastianrincon04@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:614-446-4294">(614) 446-4294</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://linkedin.com/in/sebas-rincon" target="_blank">linkedin.com/in/sebas-rincon</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Boston, MA</span>
-                    </div>
+            <section id="experience">
+                <h2>Work Experience</h2>
+                
+                <div class="card">
+                    <h3>Incoming SDE Intern</h3>
+                    <p class="company">Amazon (AWS) | Summer 2025</p>
+                    <ul>
+                        <li>Incoming Software Development Engineering Intern</li>
+                    </ul>
                 </div>
-                <form class="contact-form">
-                    <h3>Send Me a Message</h3>
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                
+                <div class="card">
+                    <h3>Software Engineering Intern</h3>
+                    <p class="company">Sierra Nevada Corporation</p>
+                    <ul>
+                        <li>Spearheaded design and implementation of robust system to test timestamp accuracy in SDR RF communication down to nanosecond scale (88ns resolution)</li>
+                        <li>Developed core software components in C/C++ using Sidekiq API for system integration</li>
+                        <li>Employed Docker for creating scalable development environments</li>
+                        <li>Led integration of Django web framework and FastAPI for internal testing platform</li>
+                        <li>Deployed applications to production with Azure CI/CD pipelines</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Machine Learning & Data Analysis Researcher</h3>
+                    <p class="company">JHU Quantum Computing Theory Group</p>
+                    <ul>
+                        <li>Used TensorFlow in Python to develop Deep Learning model for quantum system characterization</li>
+                        <li>Analyzed training data to derive ideal model for processing simulated quantum circuits</li>
+                        <li>Translated quantum mechanics foundations into testable code for noise characterization</li>
+                        <li>Gained expertise in quantum programming (Qiskit, Cirq)</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Mechanical Engineering Intern</h3>
+                    <p class="company">U.S. Army Corps of Engineers</p>
+                    <ul>
+                        <li>Designed mechanical systems for biochemistry lab using AutoCAD</li>
+                        <li>Created HVAC and exhaust system for six-building complex</li>
+                        <li>Contributed to project documentation ensuring federal compliance</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="projects">
+                <h2>Projects</h2>
+                
+                <div class="card">
+                    <h3>Smart-Alect Hackathon App</h3>
+                    <p class="tech">Flask, Google Maps API, Twilio</p>
+                    <ul>
+                        <li>Emergency response communication app connecting responders, businesses, and civilians</li>
+                        <li>Implemented location-based emergency contacts and custom instructions</li>
+                        <li>Developed admin page for geo-location mapping and emergency protocols</li>
+                        <li>Presented functional prototype to judging panel</li>
+                    </ul>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>Skin Cancer Detection ML Model</h3>
+                    <p class="tech">Python, TensorFlow, scikit-learn</p>
+                    <ul>
+                        <li>Developed ML model to differentiate benign/malignant skin moles</li>
+                        <li>Implemented deep convolutional neural networks (CNNs)</li>
+                        <li>Achieved 79.8% accuracy on validation data</li>
+                    </ul>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>Navy Federal Credit Union Co-op</h3>
+                    <p class="tech">UX Design</p>
+                    <ul>
+                        <li>Redesigned customer experience for new credit union members</li>
+                        <li>Iteratively refined UI based on user feedback</li>
+                        <li>Focused on accessibility and visual consistency</li>
+                    </ul>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </section>
+            
+            <section id="contact">
+                <h2>Get In Touch</h2>
+                <div class="card contact-card">
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:sebastianrincon04@gmail.com">sebastianrincon04@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:614-446-4294">(614) 446-4294</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://linkedin.com/in/sebas-rincon" target="_blank">linkedin.com/in/sebas-rincon</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Boston, MA</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
+                    <form class="contact-form">
+                        <h3>Send Me a Message</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
     
     <footer>
         <p>© 2023 Sebastian Rincon Camacho. All rights reserved.</p>
@@ -191,4 +193,4 @@
     
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
