@@ -1,5 +1,6 @@
 var mykey = config.MY_KEY;
 var secretkey = config.SECRET_KEY;
+var templateid = config.TEMPLATE_ID;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Only proceed if canvas exists
@@ -107,7 +108,7 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-    emailjs.send(mykey, 'YOUR_TEMPLATE_ID', {
+    emailjs.send(mykey, templateid, {
         name: this.name.value,
         email: this.email.value,
         message: this.message.value
