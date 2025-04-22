@@ -1,3 +1,6 @@
+var mykey = config.MY_KEY;
+var secretkey = config.SECRET_KEY;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Only proceed if canvas exists
     const canvas = document.getElementById('quantumCanvas');
@@ -104,7 +107,7 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    emailjs.send(mykey, 'YOUR_TEMPLATE_ID', {
         name: this.name.value,
         email: this.email.value,
         message: this.message.value
