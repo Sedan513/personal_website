@@ -1,7 +1,0 @@
-name = "my-personal-site"
-type = "javascript"
-compatibility_date = "2025-04-23"
-
-[site]
-bucket = "./dist"   # Or your actual static site directory
-entry-point = "workers-site"  # Only if using `wrangler init --site`
