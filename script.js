@@ -2,7 +2,7 @@ var mykey = config.MY_KEY;
 var secretkey = config.SECRET_KEY;
 var templateid = config.TEMPLATE_ID;
 
-ddocument.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     // Quantum Canvas Animation
     const canvas = document.getElementById('quantumCanvas');
     if (!canvas) return;
@@ -101,8 +101,12 @@ ddocument.addEventListener('DOMContentLoaded', function () {
         const name = this.querySelector('input[placeholder="Your Name"]').value;
         const email = this.querySelector('input[placeholder="Your Email"]').value;
         const message = this.querySelector('textarea[placeholder="Your Message"]').value;
-
-        emailjs.send('your_service_id', 'your_template_id', {
+        emailjs.init(config.MY_KEY);
+        emailjs.send(config.SERVICE_ID, config.TEMPLATE_ID, {
+            name,
+            email,
+            message
+        });
             name,
             email,
             message
