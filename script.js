@@ -120,4 +120,3 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.innerHTML = 'Send Message';
         });
     });
-});
