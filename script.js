@@ -1,12 +1,12 @@
 // Declare canvas and ctx globally
 let canvas;
 let ctx;
-
+dotenv.config();
 // Declare EmailJS config globally (make sure this exists, or replace manually)
-var mykey = config.MY_KEY;
-var secretkey = config.SECRET_KEY;
-var templateid = config.TEMPLATE_ID;
-
+var mykey = process.env.MY_KEY;
+var secretkey = process.env.SECRET_KEY;
+var templateid = process.env.TEMPLATE_ID;
+var serviceid = process.env.SERVICE_ID;
 // Quantum Circuit Classes
 class QuantumGate {
     constructor(x, y) {
@@ -223,7 +223,7 @@ if (form) {
         const message = this.querySelector('textarea[placeholder="Your Message"]').value;
 
         emailjs.init(mykey);
-        emailjs.send(config.SERVICE_ID, templateid, {
+        emailjs.send(serviceid, templateid, {
             name,
             email,
             message
