@@ -17,10 +17,111 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    // Quantum Circuit Class
+    class QuantumGate {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = 20;
+            this.rotation = 0;
+            this.type = Math.random() > 0.5 ? 'H' : 'X'; // Hadamard or Pauli-X gate
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            
+            // Draw gate
+            ctx.beginPath();
+            ctx.rect(-this.size/2, -this.size/2, this.size, this.size);
+            ctx.strokeStyle = 'rgba(100, 150, 255, 0.6)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Draw gate symbol
+            ctx.fillStyle = 'rgba(100, 150, 255, 0.8)';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(this.type, 0, 0);
+            
+            ctx.restore();
+        }
+
+        update() {
+            this.rotation += 0.02;
+        }
+    }
+
+    // Binary Signal Class
+    class BinarySignal {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.value = 0;
+            this.width = 30;
+            this.height = 20;
+            this.timer = 0;
+        }
+
+        draw() {
+            ctx.fillStyle = this.value ? 'rgba(100, 255, 100, 0.6)' : 'rgba(255, 100, 100, 0.6)';
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            
+            // Draw binary value
+            ctx.fillStyle = 'white';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(this.value.toString(), this.x + this.width/2, this.y + this.height/2);
+        }
+
+        update() {
+            this.timer++;
+            if (this.timer > 60) {
+                this.value = Math.random() > 0.5 ? 1 : 0;
+                this.timer = 0;
+            }
+        }
+    }
+
+    // Wave Interference Class
+    class Wave {
+        constructor(x, y, amplitude, frequency, phase) {
+            this.x = x;
+            this.y = y;
+            this.amplitude = amplitude;
+            this.frequency = frequency;
+            this.phase = phase;
+            this.points = [];
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.moveTo(0, this.y);
+            
+            for (let x = 0; x < canvas.width; x += 2) {
+                const y = this.y + Math.sin(x * this.frequency + this.phase) * this.amplitude;
+                ctx.lineTo(x, y);
+            }
+            
+            ctx.strokeStyle = 'rgba(255, 150, 100, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        update() {
+            this.phase += 0.02;
+        }
+    }
+
+    // Modified Particle class for quantum effects
     class Particle {
         constructor() {
             this.reset();
             this.y = Math.random() * canvas.height;
+            this.quantumState = Math.random() * Math.PI * 2;
         }
 
         reset() {
@@ -34,6 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         update() {
             this.y += this.speed;
+            this.quantumState += 0.05;
+            this.x += Math.sin(this.quantumState) * 0.5;
             if (this.y > canvas.height + 20) this.reset();
         }
 
@@ -45,15 +148,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Create instances
     const particles = Array.from({ length: 40 }, () => new Particle());
+    const quantumGates = Array.from({ length: 5 }, () => 
+        new QuantumGate(Math.random() * canvas.width, Math.random() * canvas.height));
+    const binarySignals = Array.from({ length: 3 }, () => 
+        new BinarySignal(Math.random() * (canvas.width - 30), Math.random() * (canvas.height - 20)));
+    const waves = [
+        new Wave(0, canvas.height/2, 30, 0.02, 0),
+        new Wave(0, canvas.height/2, 20, 0.03, Math.PI/2)
+    ];
 
     function animate() {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+        // Draw and update all animations
         particles.forEach(p => {
             p.update();
             p.draw();
+        });
+
+        quantumGates.forEach(gate => {
+            gate.update();
+            gate.draw();
+        });
+
+        binarySignals.forEach(signal => {
+            signal.update();
+            signal.draw();
+        });
+
+        waves.forEach(wave => {
+            wave.update();
+            wave.draw();
         });
 
         requestAnimationFrame(animate);
