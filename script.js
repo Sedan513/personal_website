@@ -116,11 +116,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Modified Particle class for quantum effects
+    // Quantum Particle Class
     class Particle {
         constructor() {
             this.reset();
-            this.y = Math.random() * canvas.height;
             this.quantumState = Math.random() * Math.PI * 2;
         }
 
@@ -160,10 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     function animate() {
+        // Clear with a slight fade effect
         ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Draw and update all animations
+        // Update and draw particles
         particles.forEach(p => {
             p.update();
             p.draw();
@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(animate);
     }
 
+    // Start animation
     animate();
 
     // Smooth scroll
