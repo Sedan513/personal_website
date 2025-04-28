@@ -235,10 +235,6 @@ document.addEventListener('DOMContentLoaded', function () {
             name,
             email,
             message
-        });
-            name,
-            email,
-            message
         }).then(() => {
             alert('Message sent!');
             this.reset();
