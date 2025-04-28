@@ -1,24 +1,13 @@
+// Declare canvas and ctx globally
+let canvas;
+let ctx;
+
+// Declare EmailJS config globally (make sure this exists, or replace manually)
 var mykey = config.MY_KEY;
 var secretkey = config.SECRET_KEY;
 var templateid = config.TEMPLATE_ID;
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Quantum Canvas Animation
-    const canvas = document.getElementById('quantumCanvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-});
-
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Quantum Circuit Class
+// Quantum Circuit Classes
 class QuantumGate {
     constructor(x, y) {
         this.x = x;
@@ -32,21 +21,16 @@ class QuantumGate {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
-        
-        // Draw gate
         ctx.beginPath();
-        ctx.rect(-this.size/2, -this.size/2, this.size, this.size);
+        ctx.rect(-this.size / 2, -this.size / 2, this.size, this.size);
         ctx.strokeStyle = 'rgba(100, 150, 255, 0.6)';
         ctx.lineWidth = 2;
         ctx.stroke();
-        
-        // Draw gate symbol
         ctx.fillStyle = 'rgba(100, 150, 255, 0.8)';
         ctx.font = '14px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(this.type, 0, 0);
-        
         ctx.restore();
     }
 
@@ -55,7 +39,6 @@ class QuantumGate {
     }
 }
 
-// Binary Signal Class
 class BinarySignal {
     constructor(x, y) {
         this.x = x;
@@ -69,13 +52,11 @@ class BinarySignal {
     draw() {
         ctx.fillStyle = this.value ? 'rgba(100, 255, 100, 0.6)' : 'rgba(255, 100, 100, 0.6)';
         ctx.fillRect(this.x, this.y, this.width, this.height);
-        
-        // Draw binary value
         ctx.fillStyle = 'white';
         ctx.font = '14px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(this.value.toString(), this.x + this.width/2, this.y + this.height/2);
+        ctx.fillText(this.value.toString(), this.x + this.width / 2, this.y + this.height / 2);
     }
 
     update() {
@@ -87,7 +68,6 @@ class BinarySignal {
     }
 }
 
-// Wave Interference Class
 class Wave {
     constructor(x, y, amplitude, frequency, phase) {
         this.x = x;
@@ -95,18 +75,15 @@ class Wave {
         this.amplitude = amplitude;
         this.frequency = frequency;
         this.phase = phase;
-        this.points = [];
     }
 
     draw() {
         ctx.beginPath();
         ctx.moveTo(0, this.y);
-        
         for (let x = 0; x < canvas.width; x += 2) {
             const y = this.y + Math.sin(x * this.frequency + this.phase) * this.amplitude;
             ctx.lineTo(x, y);
         }
-        
         ctx.strokeStyle = 'rgba(255, 150, 100, 0.3)';
         ctx.lineWidth = 2;
         ctx.stroke();
@@ -117,7 +94,6 @@ class Wave {
     }
 }
 
-// Quantum Particle Class
 class Particle {
     constructor() {
         this.reset();
@@ -148,23 +124,12 @@ class Particle {
     }
 }
 
-// Create instances
-const particles = Array.from({ length: 40 }, () => new Particle());
-const quantumGates = Array.from({ length: 5 }, () => 
-    new QuantumGate(Math.random() * canvas.width, Math.random() * canvas.height));
-const binarySignals = Array.from({ length: 3 }, () => 
-    new BinarySignal(Math.random() * (canvas.width - 30), Math.random() * (canvas.height - 20)));
-const waves = [
-    new Wave(0, canvas.height/2, 30, 0.02, 0),
-    new Wave(0, canvas.height/2, 20, 0.03, Math.PI/2)
-];
+let particles, quantumGates, binarySignals, waves;
 
 function animate() {
-    // Clear with a slight fade effect
     ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Update and draw particles
     particles.forEach(p => {
         p.update();
         p.draw();
@@ -188,10 +153,34 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Start animation
-animate();
+document.addEventListener('DOMContentLoaded', function () {
+    // Setup canvas
+    canvas = document.getElementById('quantumCanvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
 
-// Smooth scroll
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Initialize elements
+    particles = Array.from({ length: 40 }, () => new Particle());
+    quantumGates = Array.from({ length: 5 }, () => new QuantumGate(Math.random() * canvas.width, Math.random() * canvas.height));
+    binarySignals = Array.from({ length: 3 }, () => new BinarySignal(Math.random() * (canvas.width - 30), Math.random() * (canvas.height - 20)));
+    waves = [
+        new Wave(0, canvas.height / 2, 30, 0.02, 0),
+        new Wave(0, canvas.height / 2, 20, 0.03, Math.PI / 2)
+    ];
+
+    // Start animation
+    animate();
+});
+
+// Smooth scrolling
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -206,7 +195,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// Card hover effects (already partly handled in CSS)
+// Card hover effects
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-5px)';
@@ -219,30 +208,33 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
-// EmailJS form handler
+// EmailJS form handling
 const form = document.querySelector('.contact-form');
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
+if (form) {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    const submitBtn = this.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-    const name = this.querySelector('input[placeholder="Your Name"]').value;
-    const email = this.querySelector('input[placeholder="Your Email"]').value;
-    const message = this.querySelector('textarea[placeholder="Your Message"]').value;
-    emailjs.init(config.MY_KEY);
-    emailjs.send(config.SERVICE_ID, config.TEMPLATE_ID, {
-        name,
-        email,
-        message
-    }).then(() => {
-        alert('Message sent!');
-        this.reset();
-    }).catch((error) => {
-        alert('Error: ' + error.text);
-    }).finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send Message';
+        const name = this.querySelector('input[placeholder="Your Name"]').value;
+        const email = this.querySelector('input[placeholder="Your Email"]').value;
+        const message = this.querySelector('textarea[placeholder="Your Message"]').value;
+
+        emailjs.init(mykey);
+        emailjs.send(config.SERVICE_ID, templateid, {
+            name,
+            email,
+            message
+        }).then(() => {
+            alert('Message sent!');
+            this.reset();
+        }).catch((error) => {
+            alert('Error: ' + error.text);
+        }).finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Send Message';
+        });
     });
-});
+}
