@@ -126,6 +126,17 @@ class Particle {
 
 let particles, quantumGates, binarySignals, waves;
 
+function initializeAnimations() {
+    // Create animation elements
+    particles = Array.from({ length: 40 }, () => new Particle());
+    quantumGates = Array.from({ length: 5 }, () => new QuantumGate(Math.random() * canvas.width, Math.random() * canvas.height));
+    binarySignals = Array.from({ length: 3 }, () => new BinarySignal(Math.random() * (canvas.width - 30), Math.random() * (canvas.height - 20)));
+    waves = [
+        new Wave(0, canvas.height / 2, 30, 0.02, 0),
+        new Wave(0, canvas.height / 2, 20, 0.03, Math.PI / 2)
+    ];
+}
+
 function animate() {
     ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -156,25 +167,24 @@ function animate() {
 document.addEventListener('DOMContentLoaded', function () {
     // Setup canvas
     canvas = document.getElementById('quantumCanvas');
-    if (!canvas) return;
+    if (!canvas) {
+        console.error('Canvas element not found!');
+        return;
+    }
     ctx = canvas.getContext('2d');
+    if (!ctx) {
+        console.error('Could not get canvas context!');
+        return;
+    }
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        initializeAnimations(); // Reinitialize animations on resize
     }
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-
-    // Initialize elements
-    particles = Array.from({ length: 40 }, () => new Particle());
-    quantumGates = Array.from({ length: 5 }, () => new QuantumGate(Math.random() * canvas.width, Math.random() * canvas.height));
-    binarySignals = Array.from({ length: 3 }, () => new BinarySignal(Math.random() * (canvas.width - 30), Math.random() * (canvas.height - 20)));
-    waves = [
-        new Wave(0, canvas.height / 2, 30, 0.02, 0),
-        new Wave(0, canvas.height / 2, 20, 0.03, Math.PI / 2)
-    ];
 
     // Start animation
     animate();
