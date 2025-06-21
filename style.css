@@ -322,15 +322,15 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    opacity: 0.3;  /* Increased opacity to make it more visible */
+    z-index: 2;
+    opacity: 1;  /* Increased opacity to make it more visible */
     pointer-events: none;
 }
 
 .content-wrapper {
     position: relative;
     z-index: 1;
-    background-color: rgba(249, 250, 251, 0.85); /* Slightly more transparent */
+    background-color: rgba(249, 250, 251, 0.3);  /* More see-through */
 }
 
 /* Responsive Design */
