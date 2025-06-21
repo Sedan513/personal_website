@@ -214,33 +214,6 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
-// EmailJS form handling
-const form = document.querySelector('.contact-form');
-if (form) {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
 
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-        const name = this.querySelector('input[placeholder="Your Name"]').value;
-        const email = this.querySelector('input[placeholder="Your Email"]').value;
-        const message = this.querySelector('textarea[placeholder="Your Message"]').value;
 
-        emailjs.init(mykey);
-        emailjs.send(serviceid, templateid, {
-            name,
-            email,
-            message
-        }).then(() => {
-            alert('Message sent!');
-            this.reset();
-        }).catch((error) => {
-            alert('Error: ' + error.text);
-        }).finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Send Message';
-        });
-    });
-}
