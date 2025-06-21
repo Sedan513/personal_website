@@ -2,6 +2,12 @@
 let canvas;
 let ctx;
 // Quantum Circuit Classes
+// Declare EmailJS config globally (make sure this exists, or replace manually)
+var mykey = process.env.MY_KEY;
+var secretkey = process.env.SECRET_KEY;
+var templateid = process.env.TEMPLATE_ID;
+var serviceid = process.env.SERVICE_ID;
+// Quantum Circuit Classes
 class QuantumGate {
     constructor(x, y) {
         this.x = x;
