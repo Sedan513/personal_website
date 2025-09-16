@@ -214,6 +214,48 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
+// Contact Form Submission
+document.addEventListener('DOMContentLoaded', function () {
+    let emailJsConfig;
 
+    // Fetch the configuration from the server
+    fetch('/api/config')
+        .then(response => response.json())
+        .then(config => {
+            emailJsConfig = config;
+            // Initialize EmailJS with the public key from the server
+            emailjs.init(emailJsConfig.publicKey);
+        })
+        .catch(error => {
+            console.error('Failed to fetch EmailJS config:', error);
+            alert('Could not load contact form configuration. Please try again later.');
+        });
 
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
+            if (!emailJsConfig) {
+                alert('Contact form is not ready. Please wait a moment and try again.');
+                return;
+            }
+
+            const templateParams = {
+                from_name: document.getElementById('from_name').value,
+                from_email: document.getElementById('from_email').value,
+                message: document.getElementById('message').value,
+            };
+
+            emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, templateParams)
+                .then(function(response) {
+                   console.log('SUCCESS!', response.status, response.text);
+                   alert('Message sent successfully!');
+                   contactForm.reset(); // Clear the form
+                }, function(error) {
+                   console.log('FAILED...', error);
+                   alert('Failed to send message. Please try again.');
+                });
+        });
+    }
+});

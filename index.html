@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS with your Public Key
-        emailjs.init('er5iQ37hWg3pBfFfD'); // Find this in EmailJS Account → Integration
-    </script>
 </head>
 <body>
     <canvas id="quantumCanvas"></canvas>
@@ -21,10 +16,6 @@
                 <img src="assets/IMG_8321.jpeg" alt="Sebastian Rincon Camacho" class="profile-pic">
             </div>
             <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-            <script>
-                // Initialize EmailJS with your Public Key
-                emailjs.init('er5iQ37hWg3pBfFfD'); // Find this in EmailJS Account → Integration
-            </script>
             <h1>Sebastian Rincon Camacho</h1>
             <p class="tagline">Computer Science, Physics & Applied Mathematics</p>
         </header>
@@ -189,16 +180,16 @@
                             <span>Boston, MA</span>
                         </div>
                     </div>
-                    <form class="contact-form">
+                    <form id="contact-form" class="contact-form">
                         <h3>Send Me a Message</h3>
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" id="from_name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <input type="email" id="from_email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Your Message" rows="4" required></textarea>
+                            <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
                         </div>
                         <button type="submit">Send Message</button>
                     </form>
@@ -216,4 +207,4 @@
     </footer>
     <script src="client.js"></script>
 </body>
-</html> 
+</html>
