@@ -242,6 +242,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error(`Config endpoint returned ${response.status}`);
             }
 
+            const contentType = response.headers.get('content-type') || '';
+            if (!contentType.includes('application/json')) {
+                throw new Error('Config endpoint did not return JSON');
+            }
+
             const config = await response.json();
             if (!isValidEmailJsConfig(config)) {
                 throw new Error('Missing contact form configuration');
@@ -250,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
             emailJsConfig = config;
             emailjs.init(emailJsConfig.publicKey);
         } catch (error) {
-            console.error('Failed to load EmailJS config:', error);
+            console.warn('Skipping server config for contact form:', error.message);
         }
     }
 
