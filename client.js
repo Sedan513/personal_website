@@ -219,34 +219,54 @@ document.addEventListener('DOMContentLoaded', function () {
     let emailJsConfig;
     const contactForm = document.getElementById('contact-form');
     const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+    const isValidEmailJsConfig = (config) => {
+        return !!(config && config.publicKey && config.serviceId && config.templateId);
+    };
 
-    // Fetch the configuration from the server
-    fetch('api/config')
-        .then(response => response.json())
-        .then(config => {
-            if (!window.emailjs) {
-                throw new Error('EmailJS SDK failed to load');
+    async function initializeEmailJs() {
+        if (!window.emailjs) {
+            console.error('EmailJS SDK failed to load');
+            return;
+        }
+
+        const inlineConfig = window.EMAILJS_CONFIG;
+        if (isValidEmailJsConfig(inlineConfig)) {
+            emailJsConfig = inlineConfig;
+            emailjs.init(emailJsConfig.publicKey);
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/config');
+            if (!response.ok) {
+                throw new Error(`Config endpoint returned ${response.status}`);
             }
 
-            if (!config.publicKey || !config.serviceId || !config.templateId) {
+            const config = await response.json();
+            if (!isValidEmailJsConfig(config)) {
                 throw new Error('Missing contact form configuration');
             }
 
             emailJsConfig = config;
-            // Initialize EmailJS with the public key from the server
             emailjs.init(emailJsConfig.publicKey);
-        })
-        .catch(error => {
-            console.error('Failed to fetch EmailJS config:', error);
-            alert('Could not load contact form configuration. Please try again later.');
-        });
+        } catch (error) {
+            console.error('Failed to load EmailJS config:', error);
+        }
+    }
+
+    initializeEmailJs();
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
+            if (!window.emailjs) {
+                alert('Contact form is temporarily unavailable. Please email me directly.');
+                return;
+            }
+
             if (!emailJsConfig) {
-                alert('Contact form is not ready. Please wait a moment and try again.');
+                alert('Contact form is not configured on this deployment yet. Please email me directly.');
                 return;
             }
 
