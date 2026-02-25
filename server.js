@@ -10,6 +10,10 @@ app.use(express.static(__dirname));
 
 // ---- FIXED CONFIG ENDPOINT ----
 app.get('/api/config', (req, res) => {
+  if (!process.env.MY_KEY || !process.env.SERVICE_ID || !process.env.TEMPLATE_ID) {
+    return res.status(500).json({ error: 'Contact form is not configured on the server' });
+  }
+
   res.json({
     publicKey: process.env.MY_KEY,
     serviceId:  process.env.SERVICE_ID,

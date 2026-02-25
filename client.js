@@ -217,11 +217,21 @@ document.querySelectorAll('.card').forEach(card => {
 // Contact Form Submission
 document.addEventListener('DOMContentLoaded', function () {
     let emailJsConfig;
+    const contactForm = document.getElementById('contact-form');
+    const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
     // Fetch the configuration from the server
-    fetch('/api/config')
+    fetch('api/config')
         .then(response => response.json())
         .then(config => {
+            if (!window.emailjs) {
+                throw new Error('EmailJS SDK failed to load');
+            }
+
+            if (!config.publicKey || !config.serviceId || !config.templateId) {
+                throw new Error('Missing contact form configuration');
+            }
+
             emailJsConfig = config;
             // Initialize EmailJS with the public key from the server
             emailjs.init(emailJsConfig.publicKey);
@@ -231,7 +241,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Could not load contact form configuration. Please try again later.');
         });
 
-    const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -239,6 +248,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!emailJsConfig) {
                 alert('Contact form is not ready. Please wait a moment and try again.');
                 return;
+            }
+
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
             }
 
             const templateParams = {
@@ -255,6 +269,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, function(error) {
                    console.log('FAILED...', error);
                    alert('Failed to send message. Please try again.');
+                }).finally(function () {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    }
                 });
         });
     }
