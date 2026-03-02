@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+module.exports = (req, res) => {
   const { EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } = process.env;
 
   if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
@@ -10,4 +10,4 @@ export default function handler(req, res) {
     serviceId: EMAILJS_SERVICE_ID,
     templateId: EMAILJS_TEMPLATE_ID,
   });
-}
+};
