@@ -1,5 +1,3 @@
-console.log("client.js loaded correctly HELPS");
-document.body.insertAdjacentHTML("afterbegin", "<p>JS loaded</p>");
 // Declare canvas and ctx globally
 let canvas;
 let ctx;
