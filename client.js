@@ -219,9 +219,47 @@ document.addEventListener('DOMContentLoaded', function () {
     let emailJsConfig;
     const contactForm = document.getElementById('contact-form');
     const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+    const toastRoot = document.getElementById('toast-root');
     const isValidEmailJsConfig = (config) => {
         return !!(config && config.publicKey && config.serviceId && config.templateId);
     };
+    let activeToastTimeout;
+
+    function showToast(message) {
+        if (!toastRoot) {
+            return;
+        }
+
+        if (activeToastTimeout) {
+            clearTimeout(activeToastTimeout);
+        }
+
+        toastRoot.innerHTML = `
+            <div class="toast toast-success" role="status">
+                <span class="toast-icon" aria-hidden="true">
+                    <i data-lucide="check"></i>
+                </span>
+                <span class="toast-message">${message}</span>
+            </div>
+        `;
+
+        if (window.lucide) {
+            window.lucide.createIcons({
+                icons: toastRoot.querySelectorAll('[data-lucide]')
+            });
+        }
+
+        requestAnimationFrame(() => {
+            toastRoot.classList.add('is-visible');
+        });
+
+        activeToastTimeout = window.setTimeout(() => {
+            toastRoot.classList.remove('is-visible');
+            window.setTimeout(() => {
+                toastRoot.innerHTML = '';
+            }, 220);
+        }, 3000);
+    }
 
     async function initializeEmailJs() {
         if (!window.emailjs) {
@@ -289,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
             emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, templateParams)
                 .then(function(response) {
                    console.log('SUCCESS!', response.status, response.text);
-                   alert('Message sent successfully!');
+                   showToast('Message sent successfully.');
                    contactForm.reset(); // Clear the form
                 }, function(error) {
                    console.log('FAILED...', error);
