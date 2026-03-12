@@ -19,10 +19,10 @@ class QuantumGate {
         ctx.rotate(this.rotation);
         ctx.beginPath();
         ctx.rect(-this.size / 2, -this.size / 2, this.size, this.size);
-        ctx.strokeStyle = 'rgba(100, 150, 255, 0.6)';
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.85)';
         ctx.lineWidth = 2;
         ctx.stroke();
-        ctx.fillStyle = 'rgba(100, 150, 255, 0.8)';
+        ctx.fillStyle = 'rgba(59, 130, 246, 1)';
         ctx.font = '14px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -46,7 +46,7 @@ class BinarySignal {
     }
 
     draw() {
-        ctx.fillStyle = this.value ? 'rgba(100, 255, 100, 0.6)' : 'rgba(255, 100, 100, 0.6)';
+        ctx.fillStyle = this.value ? 'rgba(34, 197, 94, 0.75)' : 'rgba(239, 68, 68, 0.75)';
         ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.fillStyle = 'white';
         ctx.font = '14px Arial';
@@ -80,8 +80,8 @@ class Wave {
             const y = this.y + Math.sin(x * this.frequency + this.phase) * this.amplitude;
             ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = 'rgba(255, 150, 100, 0.3)';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(251, 146, 60, 0.45)';
+        ctx.lineWidth = 2.5;
         ctx.stroke();
     }
 
@@ -99,10 +99,10 @@ class Particle {
     reset() {
         this.x = Math.random() * canvas.width;
         this.y = -20;
-        this.size = Math.random() * 1 + 0.5;
-        this.speed = Math.random() * 0.8 + 0.3;
-        this.opacity = Math.random() * 0.1 + 0.02;
-        this.color = `rgba(100, 150, 255, ${this.opacity})`;
+        this.size = Math.random() * 1.4 + 0.8;
+        this.speed = Math.random() * 0.9 + 0.35;
+        this.opacity = Math.random() * 0.12 + 0.05;
+        this.color = `rgba(96, 165, 250, ${this.opacity})`;
     }
 
     update() {
